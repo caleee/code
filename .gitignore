@@ -1,0 +1,72 @@
+# Eclipse workspace settings
+.settings/
+.metadata/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# VS Code
+.vscode/
+!.vscode/settings.json.example  # Allow example config
+
+# Google Drive
+.tmp.drivedownload/
+.tmp.driveupload/
+
+# Build System Compiled output
+**/bin/
+**/bin-*/
+**/[Oo]bj/
+
+# Package manager files
+node_modules/
+jspm_packages/
+**/__pycache__/
+
+# Automation tool caches
+.grunt/
+.pnp*
+.yarn/
+
+# Release Artifacts Flash/Adobe files
+*.swf
+
+# Mobile app packages
+*.air
+*.ipa
+*.apk
+
+# Mobile signing files
+*.keystore
+*.jks
+
+# Cross-Platform Junk OS generated files
+**/.DS_Store
+._*
+Thumbs.db
+
+# Document workspace locks
+/.typora
+/.obsidian/workspace*
+
+# Security
+/stignore
+/script_test
+
+# Allow specific build output
+!**/bin/production/
+
+# Keep document assets
+!*.pdf.swf
+
+# Ignore compressed files
+**/*.zip
+**/*.rar
+**/*.7z
+**/*.tar
+**/*.tar.gz
+**/*.tgz
+**/*.bz2
+**/*.xz

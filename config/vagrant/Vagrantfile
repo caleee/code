@@ -1,0 +1,17 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "u150" do |u150|
+    u150.vm.box = "bento/ubuntu-24.04"
+    u150.vm.box_architecture = "amd64"
+    u150.vm.hostname = "u150"
+    u150.vm.provider "vmware_workstation" do |v|
+      v.vmx["memsize"] = "8192"
+      v.vmx["numvcpus"] = "4"
+      v.vmx["displayName"] = "u150"
+    end
+    u150.vm.synced_folder ".", "/vagrant", disabled: true
+    u150.vm.provision "file", source: "~/.ssh/sudoer.pub", destination: "/tmp/authorized_keys"
+    u150.vm.provision "shell",
+      path: "https://cdn.jsdelivr.net/gh/caleee/ubuntu-cloud-init@main/scripts/04-vagrant-vmware-workstation-init.sh", 
+      args: ["sudoer", "192.168.8.150/24", "192.168.8.1"]
+  end
+end
