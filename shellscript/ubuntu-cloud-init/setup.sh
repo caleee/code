@@ -18,10 +18,11 @@ AUTO_REBOOT=true
 # 项目信息
 PROJECT_NAME="Ubuntu Cloud Init"
 PROJECT_VERSION="1.0.0"
-GITHUB_REPO="caleee/ubuntu-cloud-init"
+GITHUB_REPO="caleee/code"
+FILE_PATH="shellscript/ubuntu-cloud-init"
 
 # 脚本下载源
-SCRIPT_BASE_URL="https://cdn.jsdelivr.net/gh/$GITHUB_REPO@main"
+SCRIPT_BASE_URL="https://cdn.jsdelivr.net/gh/$GITHUB_REPO@main/$FILE_PATH"
 
 # 标记是否为一键命令安装（是否下载了文件）
 IS_ONE_CLICK_INSTALL=false
