@@ -46,10 +46,14 @@ install_docker() {
         "max-size": "50m"
     },
     "registry-mirrors": [
-        "http://10.10.10.0:5000"
-    ],
-    "insecure-registries": [
-        "10.10.10.0:5000"
+        "https://docker.1ms.run",
+        "https://docker.m.daocloud.io",
+        "https://docker.xuanyuan.me",
+        "https://docker.1panel.live",
+        "https://hub.rat.dev",
+        "https://dockerproxy.net",
+        "https://registry.cyou",
+        "https://proxy.vvvv.ee"
     ],
     "storage-driver": "overlay2",
     "live-restore": true
