@@ -58,7 +58,7 @@ create_vm() {
         exit 1
     fi
 
-    qm create "$VM_ID" --name "$VM_NAME" --memory "$VM_MEMORY" --cores "$VM_CORES" --net0 virtio,bridge=vmbr0
+    qm create "$VM_ID" --name "$VM_NAME" --memory "$VM_MEMORY" --cores "$VM_CORES" --cpu host,flags=+aes --net0 virtio,bridge=vmbr0
     qm importdisk "$VM_ID" /var/lib/vz/template/iso/$IMAGE $STORAGE
     qm set "$VM_ID" --scsihw virtio-scsi-pci --scsi0 $STORAGE:vm-"$VM_ID"-disk-0
     qm resize "$VM_ID" scsi0 "$VM_SIZE"
