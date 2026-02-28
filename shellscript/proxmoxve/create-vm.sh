@@ -51,6 +51,13 @@ create_vm() {
     export IPv6="dhcp"
     export NAMESERVER="10.10.0.1"
 
+    if [ ! -f "$VM_USER_KEY" ]; then
+        echo -e "${RED}SSH公钥文件 $VM_USER_KEY 不存在！${NC}"
+        echo -e "${YELLOW}请先创建该文件，例如：${NC}"
+        echo -e "${YELLOW}ssh-keygen -t rsa -b 4096 -f ~/.ssh/sudoer -N ''${NC}"
+        exit 1
+    fi
+
     qm create "$VM_ID" --name "$VM_NAME" --memory "$VM_MEMORY" --cores "$VM_CORES" --net0 virtio,bridge=vmbr0
     qm importdisk "$VM_ID" /var/lib/vz/template/iso/$IMAGE $STORAGE
     qm set "$VM_ID" --scsihw virtio-scsi-pci --scsi0 $STORAGE:vm-"$VM_ID"-disk-0
