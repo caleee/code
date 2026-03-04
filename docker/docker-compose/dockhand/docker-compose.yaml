@@ -20,4 +20,5 @@ services:
 
 volumes:
   dockhand_data:
+    name: dockhand_data
     driver: local
