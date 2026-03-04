@@ -1,0 +1,23 @@
+networks:
+  dockhand-net:
+    name: dockhand-net
+    driver: bridge
+
+services:
+  dockhand:
+    image: fnsys/dockhand:latest
+    container_name: dockhand
+    environment:
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    ports:
+      - "3000:3000"
+    networks:
+      - dockhand-net
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - dockhand_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  dockhand_data:
+    driver: local
