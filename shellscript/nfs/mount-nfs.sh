@@ -79,6 +79,12 @@ mount_nfs() {
 
     info "Mounting NFS share: $server:$remote_path -> $local_path"
 
+    # Add timeo (timeout) option if not present to avoid long hangs
+    case "$options" in
+        *timeo=*) ;;
+        *) options="timeo=50,$options" ;;
+    esac
+
     if mount -t nfs -o "$options" "$server:$remote_path" "$local_path"; then
         info "NFS mounted successfully."
     else
@@ -114,7 +120,7 @@ usage() {
     echo "Examples:"
     echo "  $0 192.168.1.100 /exports/data /mnt/nfs/data"
     echo "  $0 -m compat 192.168.1.100 /exports/data /mnt/nfs/data"
-    echo "  \$0 -c \"hard,noatime,rsize=1048576\" 192.168.1.100 /exports/data /mnt/nfs"
+    echo "  $0 -c \"hard,noatime,rsize=1048576\" 192.168.1.100 /exports/data /mnt/nfs"
     echo "  $0 -p -m compat 192.168.1.100 /exports/data /mnt/nfs/data"
     echo ""
     echo "Options:"

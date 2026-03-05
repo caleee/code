@@ -132,3 +132,47 @@ curl -sSL https://cdn.jsdelivr.net/gh/caleee/code@main/shellscript/ubuntu-cloud-
 ```bash
 curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/ubuntu-cloud-init/scripts/05-docker.sh | bash
 ```
+
+### NFS 相关
+
+#### mount-nfs.sh
+
+```bash
+curl -sSL https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
+```
+
+```bash
+curl -sSL https://cdn.jsdelivr.net/gh/caleee/code@main/shellscript/nfs/mount-nfs.sh | bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
+```
+
+```bash
+curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
+```
+
+**选项说明：**
+
+| 选项 | 说明 |
+|------|------|
+| `-p, --persistent` | 添加到 `/etc/fstab` 实现开机自动挂载 |
+| `-m, --mode <mode>` | 挂载模式：`default` (NFSv4.2) \| `compat` (NFSv4.1) |
+| `-c, --custom <opts>` | 自定义挂载选项（如 `hard,intr,noatime`） |
+| `-h, --help` | 显示帮助信息 |
+
+**使用示例：**
+
+```bash
+# 默认模式挂载（NFSv4.2）
+sudo bash mount-nfs.sh 192.168.1.100 /exports/data /mnt/nfs/data
+
+# 兼容模式挂载（NFSv4.1，适合 CentOS 7 等旧系统）
+sudo bash mount-nfs.sh -m compat 192.168.1.100 /exports/data /mnt/nfs/data
+
+# 自定义挂载选项
+sudo bash mount-nfs.sh -c "hard,intr,rsize=65536" 192.168.1.100 /exports/data /mnt/nfs/data
+
+# 持久化挂载（添加到 fstab）
+sudo bash mount-nfs.sh -p 192.168.1.100 /exports/data /mnt/nfs/data
+
+# 组合使用：兼容模式 + 持久化
+sudo bash mount-nfs.sh -p -m compat 192.168.1.100 /exports/data /mnt/nfs/data
+```
