@@ -138,15 +138,15 @@ curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code
 #### mount-nfs.sh
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
+curl -sSL https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | sudo bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
 ```
 
 ```bash
-curl -sSL https://cdn.jsdelivr.net/gh/caleee/code@main/shellscript/nfs/mount-nfs.sh | bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
+curl -sSL https://cdn.jsdelivr.net/gh/caleee/code@main/shellscript/nfs/mount-nfs.sh | sudo bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
 ```
 
 ```bash
-curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
+curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | sudo bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
 ```
 
 **选项说明：**
