@@ -28,8 +28,26 @@ curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code
 ### Proxmox VE 相关
 
 #### create-vm.sh
+
+**参数说明：**
+
+| 参数 | 说明 |
+|------|------|
+| `$1` | VM 编号 |
+| `$2` | CPU 核心数 |
+| `$3` | 内存大小 (GB) |
+| `$4` | 磁盘大小 (GB) |
+| `$5` | 服务器 ID |
+| `$6` | 镜像类型（可选）：`ubuntu` (默认) \| `centos` |
+
+**使用示例：**
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/proxmoxve/create-vm.sh | bash -s -- 151 2 4 20 19
+```
+
+```bash
+curl -sSL https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/proxmoxve/create-vm.sh | bash -s -- 151 2 4 20 19 centos
 ```
 
 ```bash
@@ -138,15 +156,15 @@ curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code
 #### mount-nfs.sh
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | sudo bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
+curl -sSL https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | sudo bash -s -- 10.10.19.0 /mnt/nfs /mnt/nfs
 ```
 
 ```bash
-curl -sSL https://cdn.jsdelivr.net/gh/caleee/code@main/shellscript/nfs/mount-nfs.sh | sudo bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
+curl -sSL https://cdn.jsdelivr.net/gh/caleee/code@main/shellscript/nfs/mount-nfs.sh | sudo bash -s -- 10.10.19.0 /mnt/nfs /mnt/nfs
 ```
 
 ```bash
-curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | sudo bash -s -- 10.10.10.0 /mnt/nfs /mnt/nfs
+curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/nfs/mount-nfs.sh | sudo bash -s -- 10.10.19.0 /mnt/nfs /mnt/nfs
 ```
 
 **选项说明：**

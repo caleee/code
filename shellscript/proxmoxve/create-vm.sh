@@ -15,23 +15,45 @@ check_root() {
 }
 
 usage() {
-    echo -e "${YELLOW}用法:${NC} $0 <VM编号> <CPU核心数> <内存(GB)> <磁盘大小(GB)> <服务器ID>"
+    echo -e "${YELLOW}用法:${NC} $0 <VM编号> <CPU核心数> <内存(GB)> <磁盘大小(GB)> <服务器ID> [镜像类型]"
     echo -e "${YELLOW}示例:${NC} $0 151 2 4 20 19"
+    echo -e "${YELLOW}示例:${NC} $0 151 2 4 20 19 centos"
+    echo -e "${YELLOW}镜像类型:${NC} ubuntu (默认) | centos"
     exit 1
 }
 
 check_args() {
-    if [ "$#" -ne 5 ]; then
+    if [ "$#" -lt 5 ] || [ "$#" -gt 6 ]; then
         echo -e "${RED}参数数量错误！${NC}"
         usage
     fi
 
-    for arg in "$@"; do
+    for arg in "$1" "$2" "$3" "$4" "$5"; do
         if ! [[ "$arg" =~ ^[0-9]+$ ]]; then
             echo -e "${RED}参数 '$arg' 必须是纯数字！${NC}"
             usage
         fi
     done
+}
+
+select_image() {
+    local image_type="${1:-ubuntu}"
+    local ubuntu_image="noble-server-cloudimg-amd64.img"
+    local centos_image="CentOS-8-GenericCloud-8.4.2105-20210603.0.x86_64.raw"
+
+    case "${image_type,,}" in
+        ubuntu|u|""|default)
+            echo "$ubuntu_image"
+            ;;
+        centos|c)
+            echo "$centos_image"
+            ;;
+        *)
+            echo -e "${RED}不支持的镜像类型: $image_type${NC}" >&2
+            echo -e "${YELLOW}支持的类型: ubuntu (默认) | centos${NC}" >&2
+            exit 1
+            ;;
+    esac
 }
 
 create_vm() {
@@ -42,8 +64,10 @@ create_vm() {
     export VM_MEMORY="$((VM_MEMORY_G * 1024))"
     export VM_SIZE="$4"G
     export VM_SERVER_ID="$5"
+    export IMAGE_TYPE="${6:-ubuntu}"
     export STORAGE="local-lvm"
-    export IMAGE="noble-server-cloudimg-amd64.img"
+    export IMAGE=$(select_image "$IMAGE_TYPE")
+    echo -e "${GREEN}使用镜像: $IMAGE${NC}"
     export VM_USER="sudoer"
     export VM_USER_KEY="$HOME/.ssh/sudoer.pub"
     export IPv4_CIDR="10.10.$VM_SERVER_ID.$VM_ID/16"
