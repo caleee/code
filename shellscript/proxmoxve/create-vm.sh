@@ -39,7 +39,7 @@ check_args() {
 select_image() {
     local image_type="${1:-ubuntu}"
     local ubuntu_image="noble-server-cloudimg-amd64.img"
-    local centos_image="CentOS-8-GenericCloud-8.4.2105-20210603.0.x86_64.raw"
+    local centos_image="CentOS-7-x86_64-GenericCloud.raw"
 
     case "${image_type,,}" in
         ubuntu|u|""|default)
