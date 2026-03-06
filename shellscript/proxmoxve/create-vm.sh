@@ -72,7 +72,7 @@ create_vm() {
     export VM_USER_KEY="$HOME/.ssh/sudoer.pub"
     export IPv4_CIDR="10.10.$VM_SERVER_ID.$VM_ID/16"
     export IPv4_GW="10.10.0.1"
-    export IPv6="dhcp"
+    export IPv6="disabled"
     export NAMESERVER="10.10.0.1"
 
     if [ ! -f "$VM_USER_KEY" ]; then
