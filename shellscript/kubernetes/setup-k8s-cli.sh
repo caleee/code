@@ -133,9 +133,9 @@ main() {
     log::ok "k9s $K9S_VERSION installed"
 
     log::info "Installation Summary"
-    log::ok "kubectl: $(kubectl version --client | head -1 2>/dev/null || echo 'N/A')"
-    log::ok "helm:    $(helm version --short 2>/dev/null || echo 'N/A')"
-    log::ok "k9s:     $(k9s version --short 2>/dev/null || echo 'N/A')"
+    log::ok "kubectl: $(kubectl version --client 2>/dev/null | grep -o 'v[0-9][^[:space:]]*' | head -1 || echo 'N/A')"
+    log::ok "helm:    $(helm version --short 2>/dev/null | grep -o 'v[0-9][^[:space:]]*' | head -1 || echo 'N/A')"
+    log::ok "k9s:     $(k9s version --short 2>/dev/null | grep -o 'v[0-9][^[:space:]]*' | head -1 || echo 'N/A')"
 }
 
 main "$@"
