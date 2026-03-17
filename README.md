@@ -194,3 +194,23 @@ sudo bash mount-nfs.sh -p 192.168.1.100 /exports/data /mnt/nfs/data
 # 组合使用：兼容模式 + 持久化
 sudo bash mount-nfs.sh -p -m compat 192.168.1.100 /exports/data /mnt/nfs/data
 ```
+
+### Kubernetes 相关
+
+#### setup-k8s-cli.sh
+
+**功能说明：** 安装 kubectl、helm 和 k9s 等 Kubernetes 命令行工具。
+
+**使用方法：**
+
+```bash
+curl -sSL https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/kubernetes/setup-k8s-cli.sh | bash
+```
+
+```bash
+curl -sSL https://cdn.jsdelivr.net/gh/caleee/code@main/shellscript/kubernetes/setup-k8s-cli.sh | bash
+```
+
+```bash
+curl -sSL https://cdn.gh-proxy.com/https://raw.githubusercontent.com/caleee/code/refs/heads/main/shellscript/kubernetes/setup-k8s-cli.sh | bash
+```
