@@ -72,7 +72,6 @@ create_vm() {
     export VM_USER_KEY="$HOME/.ssh/sudoer.pub"
     export IPv4_CIDR="10.10.$VM_SERVER_ID.$VM_ID/16"
     export IPv4_GW="10.10.0.1"
-    export IPv6="disabled"
     export NAMESERVER="10.10.0.1"
 
     if [ ! -f "$VM_USER_KEY" ]; then
@@ -92,7 +91,7 @@ create_vm() {
     qm set "$VM_ID" --agent enabled=1
     qm set "$VM_ID" --ciuser "$VM_USER"
     qm set "$VM_ID" --sshkeys "$VM_USER_KEY"
-    qm set "$VM_ID" --ipconfig0 ip="$IPv4_CIDR",gw="$IPv4_GW",ip6="$IPv6"
+    qm set "$VM_ID" --ipconfig0 ip="$IPv4_CIDR",gw="$IPv4_GW"
     qm set "$VM_ID" --nameserver "$NAMESERVER"
 }
 
