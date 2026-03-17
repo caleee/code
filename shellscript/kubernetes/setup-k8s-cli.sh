@@ -89,9 +89,11 @@ setup_kubeconfig() {
     fi
 
     log::info "Kubeconfig directory: ~/.kube/"
-    echo "After k3s is deployed, copy kubeconfig:"
-    echo "  scp root@<MASTER_IP>:/etc/rancher/k3s/k3s.yaml ~/.kube/config-dev"
-    echo "  export KUBECONFIG=~/.kube/config-dev"
+    echo "After k3s is deployed, setup kubeconfig:"
+    echo "  1. Copy from master:"
+    echo "     scp root@<MASTER_IP>:/etc/rancher/k3s/k3s.yaml ~/.kube/config-dev"
+    echo "  2. Edit server IP in ~/.kube/config-dev if needed (127.0.0.1 -> master IP)"
+    echo "  3. Add to ~/.bashrc: export KUBECONFIG=~/.kube/config-dev"
 }
 
 # Install k9s (optional, TUI tool)
