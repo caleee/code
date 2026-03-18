@@ -21,10 +21,11 @@ iscsi_tcp
 dm_snapshot
 dm_mirror
 dm_thin_pool
+dm_crypt
 EOF
 
 # 加载模块
-MODULES=(iscsi_tcp dm_snapshot dm_mirror dm_thin_pool)
+MODULES=(iscsi_tcp dm_snapshot dm_mirror dm_thin_pool dm_crypt)
 for m in "${MODULES[@]}"; do
     echo -e "${YELLOW}加载模块: $m${NC}"
     sudo modprobe "$m"
