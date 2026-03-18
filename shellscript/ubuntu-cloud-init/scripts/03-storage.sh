@@ -55,7 +55,9 @@ echo -e "${GREEN}>>> [03/05] 完成${NC}"
 
 # 禁用 multipathd 以防止与 Longhorn 冲突
 echo -e "${GREEN}>>> [04/05] 禁用 multipathd 服务...${NC}"
+sudo systemctl disable --now multipathd.socket || true
 sudo systemctl disable --now multipathd || true
+sudo systemctl mask multipathd.socket || true
 sudo systemctl mask multipathd || true
 echo -e "${GREEN}>>> [04/05] 完成${NC}"
 
