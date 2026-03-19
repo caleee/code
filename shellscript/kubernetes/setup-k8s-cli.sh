@@ -72,6 +72,7 @@ install_helm() {
     echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
     sudo apt-get update
     sudo apt-get install -y helm
+    echo "source <(helm completion bash)" >>~/.bashrc
 
     # Add helm repo mirror
 
